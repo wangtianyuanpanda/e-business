@@ -9,7 +9,7 @@
           </div>
           <div class="search-icon">
             <!--<img src="../../assets/search.png" v-on:click="toggleModal"/>-->
-            <span v-on:click="toggleModal" style="{font-size: 12px; color: rgb(111, 111, 111);}">{{campus[curCampus]}}</span>
+            <span v-on:click="toggleModal" style="font-size: 12px; color: rgb(111, 111, 111);">{{campus[curCampus]}}</span>
           </div>
           <XDialog v-model="showCampus" class="mobile-setting-dialog" hide-on-blur>
             <div class="campus-selector">
