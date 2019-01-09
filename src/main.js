@@ -3,10 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import {remSet} from './common/common'
+import './common/reset.css'
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+remSet()
+
+/* eslint-disable */
 new Vue({
   el: '#app',
   router,
