@@ -8,7 +8,8 @@
             <input type="search" placeholder="请输入关键字搜索" v-model="searchKeyword" v-on:input="keywordSearch"/>
           </div>
           <div class="search-icon">
-            <img src="../../assets/search.png" v-on:click="toggleModal"/>
+            <!--<img src="../../assets/search.png" v-on:click="toggleModal"/>-->
+            <span v-on:click="toggleModal" style="{font-size: 12px; color: rgb(111, 111, 111);}">{{campus[curCampus]}}</span>
           </div>
           <XDialog v-model="showCampus" class="mobile-setting-dialog" hide-on-blur>
             <div class="campus-selector">
@@ -28,9 +29,10 @@
             <p>{{ item.name }}</p>
             <p>{{ item.location }}</p>
             <p style="color: #D9594C; font-size: 12px">
-              <span>团购：</span>
-              <span>{{ item.cur }} /</span>
-              <span>{{ item.total }}</span>
+              <span v-if="item.cur && item.total">团购：</span>
+              <span v-if="item.cur">{{ item.cur }} /</span>
+              <span v-if="item.total">{{ item.total }}</span>
+              <span>{{ item.remark || '' }}</span>
             </p>
           </section>
           <img src="../../assets/right-arrow.png" class="arrow" @click="toSubmit(item)"/>
@@ -68,6 +70,13 @@
             showCampus: false,
             curCampus: 'zjg',
             dataList: [],
+            campus: {
+              'zjg': '紫金港',
+              'yq': '玉泉',
+              'xx': '西溪',
+              'hjc': '华家池',
+              'zj': '之江'
+            },
             shops: {
               'zjg': [
                 {
@@ -109,6 +118,13 @@
                   thumb: require('../../assets/lnj.jpg'),
                   cur: 1,
                   total: 5
+                },
+                {
+                  name: '老娘舅',
+                  ename: 'lnj',
+                  location: '黄龙体育中心200号',
+                  thumb: require('../../assets/lnj.jpg'),
+                  remark: '等待发起团购'
                 }
               ],
               'yq': [
